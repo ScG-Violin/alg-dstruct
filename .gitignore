@@ -1,0 +1,7 @@
+#Visual studio project/solution files
+*Debug/
+*Release/
+*x64/
+*.sln
+*.vcxproj*
+*.vs/
