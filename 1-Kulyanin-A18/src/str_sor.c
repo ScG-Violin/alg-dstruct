@@ -4,6 +4,7 @@
 #include <string.h>
 #pragma warning(disable: 4996)
 
+
 cell_* CellCreate(char *data)
 {
 	cell_* body = malloc(sizeof(cell_));
@@ -88,7 +89,34 @@ int CellComperison(cell_* left, cell_* right)
 	return 0;
 }
 
-void AddCell(cell_* cell, list_* list)
+void AddCell(cell_* cell, list_* list, int position)
+{
+	if (cell->next) { perror("Intersection of list"); }
+	else
+	{
+		unsigned int i = 0;
+		cell_* buff = list->head, * prev = NULL;
+		while (buff && (i != position))
+		{
+			prev = buff;
+			buff = buff->next;
+			++i;
+		}
+		if (prev)
+		{
+			prev->next = cell;
+			cell->next = buff;
+		}
+		else
+		{
+			list->head = cell;
+			cell->next = buff;
+		}
+		(list->size)++;
+	}
+}
+
+void AddCellSort(cell_* cell, list_* list)
 {
 	if (cell->next) { perror("Intersection of list"); }
 	else
@@ -113,21 +141,24 @@ void AddCell(cell_* cell, list_* list)
 	}
 }
 
-//void ListBublSort(list_* list)
-//{
-//	if (list->size)
-//	{
-//		int i = list->size - 1, j = i;
-//		while (i)
-//		{
-//			cell_* right = list->head,* left;
-//			while (j--)
-//			{
-//				left = right;
-//				right = left->next;
-//				CellComperison(left, right);
-//			}
-//			j = --i;
-//		}
-//	}
-//}
+void ListBublSort(list_* list)
+{
+	if (list->size)
+	{
+		int i = list->size - 1, j = i;
+		while (i)
+		{
+			cell_* right = list->head,* left;
+			while (j--)
+			{
+				left = right;
+				right = left->next;
+				if (CellComperison(left, right))
+				{
+					CellSwitch(left, right);
+				}
+			}
+			j = --i;
+		}
+	}
+}
