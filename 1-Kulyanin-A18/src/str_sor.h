@@ -1,4 +1,7 @@
 #pragma once
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 //Struct of string cell
 typedef struct str_cell {
@@ -44,3 +47,7 @@ void AddCell(cell_* cell, list_* list, int position);
 
 //Bubl list sort
 void ListBublSort(list_* list);
+
+#ifdef __cplusplus
+}
+#endif
