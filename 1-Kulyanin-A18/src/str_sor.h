@@ -41,7 +41,7 @@ void CellSwitch(cell_* left, cell_* rigth);
 //if Left > Right return 1, else 0
 int CellComperison(cell_* left, cell_* right);
 
-//Add cell to list at specified position
+//Add cell to list at specified position (begins with 0)
 //if position > list->size cell added to end of list
 void AddCell(cell_* cell, list_* list, int position);
 
