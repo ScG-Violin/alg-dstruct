@@ -78,15 +78,23 @@ void CellSwitch(cell_* left, cell_* rigth)
 
 int CellComperison(cell_* left, cell_* right)
 {
-	int key = 0, i = 0;
-	if (right)
-		while (left->data[i] && (key == 0))
-		{
-			key = left->data[i] - right->data[i];
-			i++;
-		}
+	if (left)
+	{
+		int key = 0, i = 0;
+		if (right)
+			while (left->data[i] && (key == 0))
+			{
+				key = left->data[i] - right->data[i];
+				i++;
+			}
 		if (key > 0) { return 1; }
-	return 0;
+		return 0;
+	}
+	else
+	{
+		perror("Incorrect input");
+		return 0;
+	}
 }
 
 void AddCell(cell_* cell, list_* list, int position)
