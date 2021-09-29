@@ -1,7 +1,9 @@
 #Visual studio project/solution files
+*packages/
 *Debug/
 *Release/
 *x64/
 *.sln
 *.vcxproj*
 *.vs/
+*.config*
