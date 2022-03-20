@@ -167,6 +167,7 @@ void Insert(struct node** root, int data)
 {
     // Allocate memory for new node
     struct node* z = (struct node*)malloc(sizeof(struct node));
+    if (z) perror("malloc failed(");
     z->data = data;
     z->left = z->right = z->parent = NULL;
 
@@ -185,10 +186,11 @@ void Insert(struct node** root, int data)
         while (x != NULL)
         {
             y = x;
-            if (z->data < x->data)
-                x = x->left;
-            else
-                x = x->right;
+            if (z->data == x->data) {
+                free(z);
+                return 0;
+            }
+            x = data < x->data ? x->left : x->right;
         }
         z->parent = y;
         if (z->data > y->data)
